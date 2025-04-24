@@ -1,3 +1,4 @@
+import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import {
   getTodo,
@@ -138,10 +139,12 @@ export const addParticipant = createAsyncThunk(
     try {
       const response = await addParticipantToList(listId, email, role);
       return response.data;
-    } catch (error: any) {
-      return rejectWithValue(
-        error.response?.data?.message || "Failed to add participant"
-      );
+    } catch (error: unknown) {
+      let message = "Failed to add participant";
+      if (axios.isAxiosError(error)) {
+        message = error.response?.data?.message ?? message;
+      }
+      return rejectWithValue(message);
     }
   }
 );

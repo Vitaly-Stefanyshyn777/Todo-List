@@ -45,9 +45,15 @@ export const useLogin = () => {
       } else {
         alert("Access token not received.");
       }
-    } catch (error: any) {
-      alert("Error: login failed. Please try again.");
-      console.error("Login failed:", error.response?.data || error.message);
+    } catch (error: unknown) {
+      let message = "Error: login failed. Please try again.";
+      if (axios.isAxiosError(error)) {
+        console.error("Login failed:", error.response?.data || error.message);
+        message = error.response?.data?.message ?? message;
+      } else {
+        console.error("Login failed:", error);
+      }
+      alert(message);
     }
   };
   return {

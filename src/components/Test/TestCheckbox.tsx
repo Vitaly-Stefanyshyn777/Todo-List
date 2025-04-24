@@ -1,11 +1,17 @@
 import { useForm, Controller } from "react-hook-form";
 import axios from "axios";
 
+interface FormValues {
+  name: string;
+  description: string;
+  completed: boolean;
+}
+
 const API_BASE = "http://localhost:3022";
-const TODO_LIST_ID = "6807e7fb06618e9444009c10"; // 👈 постав реальний todoListId
+const TODO_LIST_ID = "6807e7fb06618e9444009c10";
 
 export default function TestCheckbox() {
-  const { control, handleSubmit, watch } = useForm({
+  const { control, handleSubmit, watch } = useForm<FormValues>({
     defaultValues: {
       name: "Test Task",
       description: "This is a test",
@@ -13,7 +19,7 @@ export default function TestCheckbox() {
     },
   });
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: FormValues) => {
     const payload = {
       ...data,
       todoListId: TODO_LIST_ID,

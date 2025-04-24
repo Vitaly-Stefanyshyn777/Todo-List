@@ -46,12 +46,18 @@ export const useRegister = () => {
       } else {
         alert("Registration succeeded but token was not received.");
       }
-    } catch (error: any) {
-      alert("Error: registration or login failed. Please try again.");
-      console.error(
-        "Registration/Login failed:",
-        error.response?.data || error.message
-      );
+    } catch (error: unknown) {
+      let message = "Error: registration or login failed. Please try again.";
+      if (axios.isAxiosError(error)) {
+        console.error(
+          "Registration/Login failed:",
+          error.response?.data || error.message
+        );
+        message = error.response?.data?.message ?? message;
+      } else {
+        console.error("Registration/Login failed:", error);
+      }
+      alert(message);
     }
   };
 
