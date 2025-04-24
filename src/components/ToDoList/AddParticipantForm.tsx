@@ -20,13 +20,29 @@ const AddParticipantForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} style={{ marginTop: "1rem" }}>
-      <input {...register("email")} placeholder="User email" required />
-      <select {...register("role")}>
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="mt-4 flex flex-col gap-4"
+    >
+      <input
+        {...register("email")}
+        placeholder="User email"
+        required
+        className="w-full p-2 bg-slate-800 text-white border border-slate-700 rounded-md focus:outline-none focus:border-indigo-600 placeholder-slate-400"
+      />
+      <select
+        {...register("role")}
+        className="w-full p-2 bg-slate-800 text-white border border-slate-700 rounded-md focus:outline-none focus:border-indigo-600"
+      >
         <option value="viewer">Viewer</option>
         <option value="admin">Admin</option>
       </select>
-      <button type="submit">Add Participant</button>
+      <button
+        type="submit"
+        className="mt-2 bg-indigo-600 text-white px-4 py-2 rounded-md font-medium hover:bg-indigo-700 transition-colors"
+      >
+        Add Participant
+      </button>
     </form>
   );
 };
