@@ -211,12 +211,6 @@ To seed the database with sample data, run the following command:
 npx tsx ./db/seed
 ```
 
-## Demo
-
-I am not sure how long I will have this demo up but you can view it here:
-
-[ https://prostore-one.vercel.app/ ](https://prostore-one.vercel.app/)
-
 ## Bug Fixes And Course FAQ
 
 ### Fix: Edge Function Middleware Limitations on Vercel
