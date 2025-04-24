@@ -27,11 +27,19 @@ export const useRegister = () => {
 
   const onSubmit = async (data: RegisterForm) => {
     try {
-      await axios.post("http://localhost:3022/auth/register", data);
-      const loginRes = await axios.post("http://localhost:3022/auth/login", {
-        email: data.email,
-        password: data.password,
-      });
+      // await axios.post("http://localhost:3022/auth/register", data);
+      await axios.post(
+        "https://todo-list-bek.onrender.com/auth/register",
+        data
+      );
+      // const loginRes = await axios.post("http://localhost:3022/auth/login", {
+      const loginRes = await axios.post(
+        "https://todo-list-bek.onrender.com/auth/login",
+        {
+          email: data.email,
+          password: data.password,
+        }
+      );
 
       const { accessToken, refreshToken, user } = loginRes.data.data;
       localStorage.setItem("refreshToken", refreshToken);

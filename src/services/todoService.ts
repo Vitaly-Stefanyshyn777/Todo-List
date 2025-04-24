@@ -1,8 +1,8 @@
 import axios from "axios";
 import { Todo } from "../types/types";
 
-// const API_BASE = "https://react-quizapp-backend.onrender.com";
-const API_BASE = "http://localhost:3022";
+const API_BASE = "https://todo-list-bek.onrender.com";
+// const API_BASE = "http://localhost:3022";
 // http://localhost:3022
 
 export const createTodoList = async (name: string) => {
