@@ -6,7 +6,6 @@ const LoginPage = () => {
   const navigate = useNavigate();
   const { register, handleSubmit, onSubmit, errors, isSubmitting } = useLogin();
 
-  // як тільки в localStorage є токен — робимо редірект на /dashboard
   useEffect(() => {
     if (localStorage.getItem("token")) {
       navigate("/dashboard", { replace: true });

@@ -3,7 +3,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { InferType } from "yup";
-import axios from "axios"; // замість firebase
+import axios from "axios";
 
 const schema = yup.object().shape({
   name: yup.string().min(1, "Name is required").required(),
@@ -25,8 +25,6 @@ export const useRegister = () => {
     resolver: yupResolver(schema),
   });
 
-  // src/hooks/useRegister.ts
-  // ...
   const onSubmit = async (data: RegisterForm) => {
     try {
       await axios.post("http://localhost:3022/auth/register", data);

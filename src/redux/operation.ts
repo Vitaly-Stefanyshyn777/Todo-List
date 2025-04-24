@@ -25,24 +25,12 @@ export const fetchTodo = createAsyncThunk(
   }
 );
 
-// export const createTodo = createAsyncThunk(
-//   "todo/createTask",
-//   async (todo: Todo, { rejectWithValue }) => {
-//     try {
-//       await addTodo(todo.todoListId, todo);
-//       return todo;
-//     } catch {
-//       return rejectWithValue("Failed to create task");
-//     }
-//   }
-// );
-
 export const createTodo = createAsyncThunk(
   "todo/createTask",
   async (todo: Todo, { rejectWithValue }) => {
     try {
       const newTodo = await addTodo(todo.todoListId, todo);
-      return newTodo; // поверни згенерований на сервері todo з id
+      return newTodo;
     } catch {
       return rejectWithValue("Failed to create task");
     }

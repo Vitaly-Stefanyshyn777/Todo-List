@@ -23,23 +23,6 @@ export const useLogin = () => {
     formState: { errors, isSubmitting },
     reset,
   } = useForm<LoginForm>({ resolver: yupResolver(schema) });
-
-  // const onSubmit = async (data: LoginForm) => {
-  //   try {
-  //     const response = await axios.post(
-  //       // "https://react-quizapp-backend.onrender.com/auth/login",
-  //       "http://localhost:3022/auth/login",
-  //       data
-  //     );
-  //     // Save tokens or whatever is returned as needed
-  //     alert("Login successful!");
-  //     navigate("/dashboard");
-  //     reset();
-  //   } catch (error: any) {
-  //     alert("Error: login failed. Please try again.");
-  //     console.error("Login failed:", error.response?.data || error.message);
-  //   }
-  // };
   const onSubmit = async (data: LoginForm) => {
     try {
       const response = await axios.post(

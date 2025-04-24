@@ -1,4 +1,3 @@
-// Tailwind CSS utility classes are used instead of styled-components
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import TodoListForm from "../components/ToDoList/TodoListForm";
