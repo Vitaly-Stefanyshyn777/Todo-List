@@ -115,14 +115,6 @@ import { TodoFormData, Todo } from "../../types/types";
 import { useParams } from "react-router-dom";
 import { createTodo, updateTodo } from "../../redux/operation";
 import { fetchTodo } from "../../redux/operation";
-import {
-  Form,
-  Label,
-  Input,
-  ErrorText,
-  CheckboxWrapper,
-  SubmitButton,
-} from "./TodoForm.styled";
 
 const TodoForm = ({
   editingTodo,
@@ -188,28 +180,32 @@ const TodoForm = ({
   };
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
       <div>
-        <Label>Name</Label>
-        <Input
+        <label className="block text-white mb-1 text-base">Name</label>
+        <input
           {...register("name", { required: "Name is required" })}
           placeholder="Todo name"
+          className="w-full p-3 bg-slate-800 text-white border border-slate-700 rounded-md text-base focus:outline-none focus:border-indigo-600 placeholder-slate-400"
         />
-        {errors.name && <ErrorText>{errors.name.message}</ErrorText>}
-      </div>
-
-      <div>
-        <Label>Description</Label>
-        <Input
-          {...register("description", { required: "Description is required" })}
-          placeholder="Todo description"
-        />
-        {errors.description && (
-          <ErrorText>{errors.description.message}</ErrorText>
+        {errors.name && (
+          <p className="text-red-500 text-sm">{errors.name.message}</p>
         )}
       </div>
 
-      <CheckboxWrapper>
+      <div>
+        <label className="block text-white mb-1 text-base">Description</label>
+        <input
+          {...register("description", { required: "Description is required" })}
+          placeholder="Todo description"
+          className="w-full p-3 bg-slate-800 text-white border border-slate-700 rounded-md text-base focus:outline-none focus:border-indigo-600 placeholder-slate-400"
+        />
+        {errors.description && (
+          <p className="text-red-500 text-sm">{errors.description.message}</p>
+        )}
+      </div>
+
+      <div className="flex items-center gap-2 text-white">
         <Controller
           name="completed"
           control={control}
@@ -222,27 +218,30 @@ const TodoForm = ({
             />
           )}
         />
-        <Label>Completed</Label>
-      </CheckboxWrapper>
+        <label className="block text-white mb-1 text-base">Completed</label>
+      </div>
 
-      <div style={{ display: "flex", gap: "0.5rem" }}>
-        <SubmitButton type="submit">
+      <div className="flex gap-2">
+        <button
+          type="submit"
+          className="bg-indigo-600 text-white px-5 py-2 rounded-md font-medium hover:bg-indigo-700"
+        >
           {editingTodo ? "Update" : "Create"}
-        </SubmitButton>
+        </button>
         {editingTodo && (
-          <SubmitButton
+          <button
             type="button"
-            style={{ backgroundColor: "#6b7280" }}
+            className="bg-gray-600 text-white px-5 py-2 rounded-md font-medium hover:bg-gray-700"
             onClick={() => {
               setEditingTodo(null);
               reset();
             }}
           >
             Cancel
-          </SubmitButton>
+          </button>
         )}
       </div>
-    </Form>
+    </form>
   );
 };
 

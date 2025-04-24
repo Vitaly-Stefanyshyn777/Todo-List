@@ -1,14 +1,6 @@
 import { TodoCardProps } from "../../types/types";
 import { useAppDispatch } from "../../redux/hooks";
 import { deleteTodo } from "../../redux/operation";
-import {
-  Card,
-  Title,
-  Description,
-  Status,
-  ButtonGroup,
-  ActionButton,
-} from "./TodoCard.styled";
 import { useState, useEffect } from "react";
 
 const TodoCard = ({ todo, onEdit }: TodoCardProps) => {
@@ -35,23 +27,37 @@ const TodoCard = ({ todo, onEdit }: TodoCardProps) => {
   };
 
   return (
-    <Card>
-      <Title>{todo.name}</Title>
-      <Description>{todo.description}</Description>
-      <Status $completed={todo.completed}>
+    <div className="bg-gray-800 p-6 rounded-lg shadow-md text-gray-100 flex flex-col gap-4">
+      <h3 className="text-xl font-semibold text-white">{todo.name}</h3>
+      <p className="text-base leading-relaxed text-gray-300">
+        {todo.description}
+      </p>
+      <span
+        className={`text-sm font-medium ${
+          todo.completed ? "text-green-500" : "text-yellow-500"
+        }`}
+      >
         {todo.completed ? "✅ Completed" : "⌛ Pending"}
-      </Status>
+      </span>
       {role === "admin" && (
-        <ButtonGroup>
-          <ActionButton onClick={onEdit} color="#2563eb">
+        <div className="flex justify-end gap-2">
+          <button
+            type="button"
+            onClick={onEdit}
+            className="bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:opacity-90"
+          >
             ✏️ Edit
-          </ActionButton>
-          <ActionButton onClick={handleDelete} color="#dc2626">
+          </button>
+          <button
+            type="button"
+            onClick={handleDelete}
+            className="bg-red-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:opacity-90"
+          >
             🗑️ Delete
-          </ActionButton>
-        </ButtonGroup>
+          </button>
+        </div>
       )}
-    </Card>
+    </div>
   );
 };
 
