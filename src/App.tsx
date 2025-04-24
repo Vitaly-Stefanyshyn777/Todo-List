@@ -4,7 +4,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import PrivateRoute from "./routes/PrivateRoute";
 import Dashboard from "./pages/Dashboard";
 import TodoList from "./components/ToDoList/TodoList";
-import TestCheckbox from "./components/Test/TestCheckbox";
+// import TestCheckbox from "./components/Test/TestCheckbox";
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
       <Route path="/" element={<Navigate to="/dashboard" />} />
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/login" element={<LoginPage />} />
-      <Route path="/test" element={<TestCheckbox />} />
+      {/* <Route path="/test" element={<TestCheckbox />} /> */}
       <Route
         path="/dashboard"
         element={
@@ -26,7 +26,7 @@ function App() {
         element={
           <PrivateRoute>
             <TodoList />
-            <TestCheckbox />
+            {/* <TestCheckbox /> */}
           </PrivateRoute>
         }
       />

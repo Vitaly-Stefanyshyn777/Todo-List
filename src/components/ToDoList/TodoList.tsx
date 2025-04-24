@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import TodoCard from "../ToDo/TodoCard";
 import TodoForm from "../ToDo/TodoForm";
-import AddParticipantForm from "./AddParticipantForm";
+// import AddParticipantForm from "./AddParticipantForm";
 import { Todo } from "../../types/types";
 import { fetchTodo } from "../../redux/operation";
 
@@ -49,7 +49,6 @@ const TodoList = () => {
           <span>{editingTodo ? "Edit Todo" : "Create New Todo"}</span>
         </div>
         <TodoForm editingTodo={editingTodo} setEditingTodo={setEditingTodo} />
-        <AddParticipantForm />
       </aside>
 
       <main className="flex-1 p-8">

@@ -4,7 +4,7 @@ import TodoListForm from "../components/ToDoList/TodoListForm";
 import TodoListCard from "../components/ToDoList/TodoListCard";
 import { fetchTodoLists } from "../redux/operation";
 import { TodoList } from "../types/types";
-import { useNavigate } from "react-router-dom"; // ← Додати цей рядок
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
   const dispatch = useAppDispatch();
