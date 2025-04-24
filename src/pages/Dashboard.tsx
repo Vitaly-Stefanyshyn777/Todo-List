@@ -49,7 +49,7 @@ const Dashboard = () => {
         }}
         className="bg-indigo-600 text-white rounded-md px-5 py-2 font-medium mb-4 hover:bg-indigo-700 transition-colors"
       >
-        {showCreateForm ? "Cancel" : "+ Новое воспоминание"}
+        {showCreateForm ? "Cancel" : "+ New memory"}
       </button>
 
       {showCreateForm && (
